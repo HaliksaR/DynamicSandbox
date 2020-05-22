@@ -1,0 +1,22 @@
+rootProject.name='DynamicSandbox'
+include ':app'
+
+include ':libraries:core'
+include ':libraries:navigation'
+include ':libraries:splitinstaller'
+include ':libraries:network'
+include ':libraries:storage'
+include ':libraries:testutils'
+
+include ':features:splash'
+include ':features:main'
+include ':features:user:loginselection'
+include ':features:user:userscreen'
+include ':features:user:edit:interests'
+include ':features:home'
+include ':features:events:homeevents'
+include ':features:vacancies:homevacancies'
+
+include ':subModule:responsescreen'
+
+include ':dynamicFeatures:escorts'
