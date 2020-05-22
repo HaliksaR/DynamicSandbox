@@ -1,4 +1,4 @@
-apply plugin: Plugins.application
+apply plugin: Plugins.androidLib
 apply plugin: Plugins.kotlinAndroid
 apply plugin: Plugins.kotlinAndroidExtensions
 

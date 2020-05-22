@@ -3,6 +3,8 @@ ext {
 		application : 'com.android.application',
 		kotlinAndroid: 'kotlin-android',
 		kotlinAndroidExtensions: 'kotlin-android-extensions',
-		kotlinKapt: 'kotlin-kapt'
+		kotlinKapt: 'kotlin-kapt',
+		dynamicFeature: 'com.android.dynamic-feature',
+		androidLib: 'com.android.library'
 	]
 }
