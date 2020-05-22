@@ -1,0 +1,32 @@
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+
+ext {
+	Configs = [
+		appID : "ru.shiftlaboratory",
+		androidCompileSdkVersion : 29,
+		androidMinSdkVersion     : 22,
+		androidTargetSdkVersion  : 29,
+		androidVersionCode       : 10,
+		androidVersionName       : "1.0",
+		jvmTarget                : "1.8",
+		nameApk                  : "cft-team-1.0",
+		sourceCompatibility      : JavaVersion.VERSION_1_8,
+		targetCompatibility      : JavaVersion.VERSION_1_8,
+		string                   : "String",
+		apkVersion               : "CONFIG_APK_VERSION",
+		apkFullVersion           : "\"cft-team-1.0${Utils.getBuildVersion()}\"",
+
+		BACKEND_ENDPOINT         : "BACKEND_ENDPOINT",
+		BACKEND_ENDPOINT_PROD    : "\"https://shiftlab.cft.ru:8443\"",
+		BACKEND_ENDPOINT_DEV     : "\"https://shiftlab.cft.ru:8443\"",
+		BACKEND_FAKE_ENDPOINT    : "BACKEND_FAKE_ENDPOINT",
+		BACKEND_ENDPOINT_DEV_FAKE: "\"https://my-json-server.typicode.com/HaliksaR/SandBoxDatabase/\"",
+	]
+}
+
+class Utils {
+	static def getBuildVersion() {
+		return LocalDateTime.now().format(DateTimeFormatter.ofPattern("dMM_HHmm"))
+	}
+}

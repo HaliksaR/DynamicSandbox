@@ -1,0 +1,30 @@
+apply from: "${project.rootDir}/build_system/configs.gradle"
+apply from: "${project.rootDir}/build_system/buildTypes.gradle"
+
+android {
+	compileSdkVersion Configs.androidCompileSdkVersion
+
+	defaultConfig {
+		minSdkVersion Configs.androidMinSdkVersion
+		targetSdkVersion Configs.androidTargetSdkVersion
+		testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+		consumerProguardFiles 'consumer-rules.pro'
+	}
+
+	lintOptions {
+		abortOnError false
+	}
+
+	dataBinding {
+		enabled = true
+	}
+
+	compileOptions {
+		sourceCompatibility Configs.sourceCompatibility
+		targetCompatibility Configs.targetCompatibility
+	}
+
+	kotlinOptions {
+		jvmTarget = Configs.jvmTarget
+	}
+}

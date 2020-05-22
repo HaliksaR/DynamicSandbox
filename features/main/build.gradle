@@ -2,7 +2,7 @@ apply plugin: Plugins.androidLib
 apply plugin: Plugins.kotlinAndroid
 apply plugin: Plugins.kotlinAndroidExtensions
 
-apply from: "${project.rootDir}/build_system/android.gradle"
+apply from: "${project.rootDir}/build_system/androidLibrary.gradle"
 
 android {
     defaultConfig {
@@ -21,11 +21,14 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation Dependencies.kotlinStdlibJdk7
-    implementation Dependencies.appcompat
-    implementation Dependencies.coreKTX
-    implementation Dependencies.constraintlayout
-    testImplementation DependenciesForTests.junit
-    androidTestImplementation DependenciesForTests.junitAndroid
-    androidTestImplementation DependenciesForTests.espressoCore
+    implementation Dependencies.KOTLIN_STANDARD_LIBRARY
+    implementation Dependencies.APP_COMPAT
+    implementation Dependencies.CORE
+    implementation Dependencies.CONSTRAINT_LAYOUT
+	testImplementation(DependenciesForTests.JUNIT)
+	testImplementation(DependenciesForTests.KOTEST)
+	testImplementation(DependenciesForTests.MOCKK)
+	testImplementation(DependenciesForTests.CORE)
+	androidTestImplementation(DependenciesForTests.JUNIT_EXT)
+	androidTestImplementation(DependenciesForTests.ESPRESSO)
 }

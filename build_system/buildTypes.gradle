@@ -1,0 +1,16 @@
+apply from: "${project.rootDir}/build_system/configs.gradle"
+
+android {
+	buildTypes {
+		release {
+			minifyEnabled true
+			buildConfigField Configs.string, Configs.BACKEND_ENDPOINT, Configs.BACKEND_ENDPOINT_PROD
+			proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+		}
+		debug {
+			minifyEnabled false
+			buildConfigField Configs.string, Configs.BACKEND_ENDPOINT, Configs.BACKEND_ENDPOINT_DEV
+			buildConfigField Configs.string, Configs.BACKEND_FAKE_ENDPOINT, Configs.BACKEND_ENDPOINT_DEV_FAKE
+		}
+	}
+}
