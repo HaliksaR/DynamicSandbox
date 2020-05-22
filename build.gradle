@@ -2,6 +2,9 @@ buildscript {
 	apply from: "${project.rootDir}/build_system/dependencies.gradle"
 	apply from: "${project.rootDir}/build_system/plugins.gradle"
 	apply from: "${project.rootDir}/build_system/modules.gradle"
+	ext {
+		kotlin_version = '1.3.72'
+	}
 
 	repositories {
 		google()

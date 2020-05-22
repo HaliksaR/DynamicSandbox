@@ -1,21 +1,9 @@
 apply plugin: Plugins.DYNAMIC_FEATURE
+apply plugin: Plugins.KOTLIN_ANDROID
+apply plugin: Plugins.KOTLIN_EXTENSIONS
 
-android {
-    compileSdkVersion 29
-    
-
-    defaultConfig {
-        minSdkVersion 22
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
-
-    }
-
-
-}
+apply from: "${project.rootDir}/build_system/androidDynamic.gradle"
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project(':app')
+	implementation project(Modules.App)
 }

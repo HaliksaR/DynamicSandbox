@@ -8,4 +8,5 @@ apply from: "${project.rootDir}/build_system/androidLibrary.gradle"
 dependencies {
 	implementation Dependencies.NAVIGATION_FRAGMENT_KTX
 	implementation Dependencies.NAVIGATION_UI_KTX
+	implementation Dependencies.NAVIGATION_DDM //https://developer.android.com/guide/navigation/navigation-dynamic?authuser=1
 }

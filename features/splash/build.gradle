@@ -6,11 +6,14 @@ apply plugin: Plugins.KOTLIN_EXTENSIONS
 apply from: "${project.rootDir}/build_system/androidLibrary.gradle"
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation Dependencies.KOTLIN_STANDARD_LIBRARY
-    implementation Dependencies.APP_COMPAT
-    implementation Dependencies.CORE
-    implementation Dependencies.CONSTRAINT_LAYOUT
+	implementation fileTree(dir: 'libs', include: ['*.jar'])
+	implementation Dependencies.KOTLIN_STANDARD_LIBRARY
+	implementation Dependencies.APP_COMPAT
+	implementation Dependencies.CORE
+	implementation Dependencies.CONSTRAINT_LAYOUT
+	implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+	implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+	implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
 	testImplementation(DependenciesForTests.JUNIT)
 	testImplementation(DependenciesForTests.KOTEST)
 	testImplementation(DependenciesForTests.MOCKK)

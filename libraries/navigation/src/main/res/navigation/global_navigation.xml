@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-	android:id="@+id/global_navigation">
-
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:id="@+id/navigation_global"
+	app:startDestination="@id/EscortsFragment">
+	<fragment
+		android:id="@+id/splashFragment"
+		android:name="ru.shiftlaboratory.features.splash.SplashFragment"
+		android:label="SplashFragment">
+	</fragment>
+	<fragment
+		android:id="@+id/EscortsFragment"
+		android:name="ru.shiftlaboratory.dynamicFeatures.escorts.EscortsFragment"
+		android:label="EscortsFragment">
+	</fragment>
 </navigation>

@@ -1,6 +1,8 @@
 apply plugin: Plugins.ANDROID_APPLICATION
 apply plugin: Plugins.KOTLIN_ANDROID
 apply plugin: Plugins.KOTLIN_EXTENSIONS
+apply plugin: Plugins.NAVIGATION_SAVEARGS_KOTLIN
+apply plugin: Plugins.KOTLIN_KAPT
 
 apply from: "${project.rootDir}/build_system/androidApplication.gradle"
 
@@ -9,18 +11,26 @@ android {
 }
 
 dependencies {
-    implementation Dependencies.KOTLIN_STANDARD_LIBRARY
-    implementation Dependencies.APP_COMPAT
-    implementation Dependencies.CORE
-    implementation Dependencies.CONSTRAINT_LAYOUT
-
+	api 'androidx.legacy:legacy-support-v4:1.0.0'
+	api 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+	api 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
 	implementation Dependencies.KOTLIN_STANDARD_LIBRARY
+	implementation Dependencies.CORE
+	implementation Dependencies.CONSTRAINT_LAYOUT
+
+	implementation Dependencies.PLAY_CORE
+
+	implementation Dependencies.NAVIGATION_FRAGMENT_KTX
+	implementation Dependencies.NAVIGATION_UI_KTX
+	implementation Dependencies.NAVIGATION_DDM
+
+	implementation Dependencies.LIFECYCLE_VIEWMODEL_KTX
+	implementation Dependencies.LIFECYCLE_COMMON_JAVA8
 
 	implementation Dependencies.CORE
 	implementation Dependencies.MATERIAL
 	implementation Dependencies.APP_COMPAT
 	implementation Dependencies.CONSTRAINT_LAYOUT
-
 
 	implementation Dependencies.KOIN_SCOPE
 	implementation Dependencies.KOIN_VIEWMODEL
@@ -35,10 +45,20 @@ dependencies {
 	androidTestImplementation DependenciesForTests.JUNIT_EXT
 	androidTestImplementation DependenciesForTests.ESPRESSO
 
-
-
-	implementation project(Modules.Splash)
 	implementation project(LibModules.Core)
 	implementation project(LibModules.Navigation)
 	implementation project(LibModules.SplitInstaller)
+	implementation project(LibModules.Network)
+	implementation project(LibModules.Storage)
+	implementation project(LibModules.TestUtils)
+	implementation project(Modules.Splash)
+	implementation project(Modules.Main)
+	implementation project(Modules.Home)
+	implementation project(Modules.UserLoginSelection)
+	implementation project(Modules.UserScreen)
+	implementation project(Modules.UserEditInterests)
+	implementation project(Modules.EventsHome)
+	implementation project(Modules.VacanciesHome)
+	implementation project(SubModules.Responsescreen)
+	api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }

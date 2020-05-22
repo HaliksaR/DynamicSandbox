@@ -11,8 +11,6 @@ ext {
 		androidVersionName       : "1.0",
 		jvmTarget                : "1.8",
 		nameApk                  : "cft-team-1.0",
-		sourceCompatibility      : JavaVersion.VERSION_1_8,
-		targetCompatibility      : JavaVersion.VERSION_1_8,
 		string                   : "String",
 		apkVersion               : "CONFIG_APK_VERSION",
 		apkFullVersion           : "\"cft-team-1.0${Utils.getBuildVersion()}\"",
