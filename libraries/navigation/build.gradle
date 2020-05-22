@@ -1,37 +1,11 @@
-apply plugin: Plugins.androidLib
-apply plugin: Plugins.kotlinAndroid
-apply plugin: Plugins.kotlinAndroidExtensions
-
+apply plugin: Plugins.ANDROID_LIBRARY
+apply plugin: Plugins.KOTLIN_ANDROID
+apply plugin: Plugins.KOTLIN_EXTENSIONS
+apply plugin: Plugins.NAVIGATION_SAVEARGS_KOTLIN
 
 apply from: "${project.rootDir}/build_system/androidLibrary.gradle"
 
-android {
-    defaultConfig {
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles 'consumer-rules.pro'
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
-
-}
-
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation Dependencies.KOTLIN_STANDARD_LIBRARY
-    implementation Dependencies.APP_COMPAT
-    implementation Dependencies.CORE
-    implementation Dependencies.CONSTRAINT_LAYOUT
-	testImplementation(DependenciesForTests.JUNIT)
-	testImplementation(DependenciesForTests.KOTEST)
-	testImplementation(DependenciesForTests.MOCKK)
-	testImplementation(DependenciesForTests.CORE)
-	androidTestImplementation(DependenciesForTests.JUNIT_EXT)
-	androidTestImplementation(DependenciesForTests.ESPRESSO)
-	implementation 'androidx.navigation:navigation-fragment-ktx:2.2.2'
-	implementation 'androidx.navigation:navigation-ui-ktx:2.2.2'
+	implementation Dependencies.NAVIGATION_FRAGMENT_KTX
+	implementation Dependencies.NAVIGATION_UI_KTX
 }

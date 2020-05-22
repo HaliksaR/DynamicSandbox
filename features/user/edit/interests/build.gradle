@@ -1,24 +1,9 @@
-apply plugin: Plugins.androidLib
-apply plugin: Plugins.kotlinAndroid
-apply plugin: Plugins.kotlinAndroidExtensions
+apply plugin: Plugins.ANDROID_LIBRARY
+apply plugin: Plugins.KOTLIN_ANDROID
+apply plugin: Plugins.KOTLIN_EXTENSIONS
 
 
 apply from: "${project.rootDir}/build_system/androidLibrary.gradle"
-
-android {
-    defaultConfig {
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles 'consumer-rules.pro'
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
-
-}
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])

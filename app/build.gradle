@@ -1,6 +1,6 @@
-apply plugin: Plugins.application
-apply plugin: Plugins.kotlinAndroid
-apply plugin: Plugins.kotlinAndroidExtensions
+apply plugin: Plugins.ANDROID_APPLICATION
+apply plugin: Plugins.KOTLIN_ANDROID
+apply plugin: Plugins.KOTLIN_EXTENSIONS
 
 apply from: "${project.rootDir}/build_system/androidApplication.gradle"
 

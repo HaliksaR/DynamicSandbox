@@ -1,4 +1,4 @@
-apply plugin: Plugins.dynamicFeature
+apply plugin: Plugins.DYNAMIC_FEATURE
 
 android {
     compileSdkVersion 29
