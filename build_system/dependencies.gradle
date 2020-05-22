@@ -1,0 +1,29 @@
+def Verisons = [
+	kotlin          : '1.3.72',
+	gradle          : '3.6.3',
+	appcompat       : '1.1.0',
+	coreKTX         : '1.2.0',
+	constraintlayout: '1.1.3',
+	junitAndroid    : '1.1.1',
+	junit           : '4.13',
+	espressoCore    : '3.2.0',
+]
+
+ext {
+	Dependencies = [
+		KotlinGradlePlugin: "org.jetbrains.kotlin:kotlin-gradle-plugin:$Verisons.kotlin",
+		Gradle            : "com.android.tools.build:gradle:$Verisons.gradle",
+
+		kotlinStdlibJdk7  : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$Verisons.kotlin",
+
+		appcompat         : "androidx.appcompat:appcompat:$Verisons.appcompat",
+		coreKTX           : "androidx.core:core-ktx:$Verisons.coreKTX",
+		constraintlayout  : "androidx.constraintlayout:constraintlayout:$Verisons.constraintlayout"
+
+	]
+	DependenciesForTests = [
+		junit       : "junit:junit:$Verisons.junit",
+		junitAndroid: "androidx.test.ext:junit:$Verisons.junitAndroid",
+		espressoCore: "androidx.test.espresso:espresso-core:$Verisons.espressoCore",
+	]
+}

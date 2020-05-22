@@ -1,0 +1,8 @@
+ext {
+	Plugins = [
+		application : 'com.android.application',
+		kotlinAndroid: 'kotlin-android',
+		kotlinAndroidExtensions: 'kotlin-android-extensions',
+		kotlinKapt: 'kotlin-kapt'
+	]
+}

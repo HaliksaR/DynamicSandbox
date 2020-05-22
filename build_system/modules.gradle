@@ -1,0 +1,35 @@
+ext {
+	Modules = [
+		App               : ':app',
+
+
+		Splash            : ':features:splash',
+		Main              : ':features:main',
+		Home              : ':features:home',
+
+
+		UserLoginSelection: ':features:user:loginselection',
+		UserScreen        : ':features:user:userscreen',
+		UserEditInterests : ':features:user:edit:interests',
+
+
+		EventsHome        : ':features:events:homeevents',
+
+
+		VacanciesHome     : ':features:vacancies:homevacancies'
+	]
+	SubModules = [
+		Responsescreen: ':subModule:responsescreen'
+	]
+	DynamicModules = [
+		Escorts: ':dynamicFeatures:escorts'
+	]
+	LibModules = [
+		Core          : ':libraries:core',
+		Navigation    : ':libraries:navigation',
+		SplitInstaller: ':libraries:splitinstaller',
+		Network       : ':libraries:network',
+		Storage       : ':libraries:storage',
+		TestUtils     : ':libraries:testutils',
+	]
+}

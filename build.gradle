@@ -1,29 +1,56 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 buildscript {
-    ext.kotlin_version = '1.3.72'
-    repositories {
-        google()
-        jcenter()
-        
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:3.6.3'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+	apply from: "${project.rootDir}/build_system/dependencies.gradle"
+	apply from: "${project.rootDir}/build_system/plugins.gradle"
+	apply from: "${project.rootDir}/build_system/modules.gradle"
 
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
-    }
+	repositories {
+		google()
+		jcenter()
+
+	}
+	dependencies {
+		classpath Dependencies.Gradle
+		classpath Dependencies.KotlinGradlePlugin
+	}
 }
 
 allprojects {
-    repositories {
-        google()
-        jcenter()
-        
-    }
+	repositories {
+		google()
+		jcenter()
+	}
+
+	ext {
+		androidCompileSdkVersion = 29
+		androidMinSdkVersion = 22
+		androidTargetSdkVersion = 29
+		androidVersionCode = 10
+		androidVersionName = "1.0"
+		jvmTarget = "1.8"
+		nameApk = "cft-team-1.0"
+		sourceCompatibility = JavaVersion.VERSION_1_8
+		targetCompatibility = JavaVersion.VERSION_1_8
+		string = "String"
+		apkVersion = "CONFIG_APK_VERSION"
+		apkFullVersion = "\"cft-team-1.0${Utils.getBuildVersion()}\""
+
+		BACKEND_ENDPOINT = "BACKEND_ENDPOINT"
+		BACKEND_ENDPOINT_PROD = "\"https://shiftlab.cft.ru:8443\""
+		BACKEND_ENDPOINT_DEV = "\"https://shiftlab.cft.ru:8443\""
+		BACKEND_FAKE_ENDPOINT = "BACKEND_FAKE_ENDPOINT"
+		BACKEND_ENDPOINT_DEV_FAKE = "\"https://my-json-server.typicode.com/HaliksaR/SandBoxDatabase/\""
+	}
 }
 
 task clean(type: Delete) {
-    delete rootProject.buildDir
+	delete rootProject.buildDir
+}
+
+class Utils {
+	static def getBuildVersion() {
+		return LocalDateTime.now().format(DateTimeFormatter.ofPattern("dMM_HHmm"))
+	}
 }

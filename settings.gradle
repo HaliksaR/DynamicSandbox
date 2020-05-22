@@ -1,22 +1,33 @@
+apply from: "build_system/modules.gradle"
+
 rootProject.name='DynamicSandbox'
-include ':app'
 
-include ':libraries:core'
-include ':libraries:navigation'
-include ':libraries:splitinstaller'
-include ':libraries:network'
-include ':libraries:storage'
-include ':libraries:testutils'
+include Modules.App
 
-include ':features:splash'
-include ':features:main'
-include ':features:user:loginselection'
-include ':features:user:userscreen'
-include ':features:user:edit:interests'
-include ':features:home'
-include ':features:events:homeevents'
-include ':features:vacancies:homevacancies'
+include LibModules.Core
+include LibModules.Navigation
+include LibModules.SplitInstaller
+include LibModules.Network
+include LibModules.Storage
+include LibModules.TestUtils
 
-include ':subModule:responsescreen'
+include Modules.Splash
+include Modules.Main
+include Modules.Home
+include Modules.UserLoginSelection
+include Modules.UserScreen
+include Modules.UserEditInterests
+include Modules.EventsHome
+include Modules.VacanciesHome
 
-include ':dynamicFeatures:escorts'
+
+include SubModules.Responsescreen
+
+
+include DynamicModules.Escorts
+
+
+
+
+
+
