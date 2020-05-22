@@ -60,5 +60,4 @@ dependencies {
 	implementation project(Modules.EventsHome)
 	implementation project(Modules.VacanciesHome)
 	implementation project(SubModules.Responsescreen)
-	api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }

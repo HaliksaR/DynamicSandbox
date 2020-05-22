@@ -6,4 +6,6 @@ apply from: "${project.rootDir}/build_system/androidDynamic.gradle"
 
 dependencies {
 	implementation project(Modules.App)
+	implementation 'androidx.navigation:navigation-fragment-ktx:2.2.2'
+	implementation 'androidx.navigation:navigation-ui-ktx:2.2.2'
 }

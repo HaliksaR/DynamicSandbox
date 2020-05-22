@@ -5,7 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
+import kotlinx.android.synthetic.main.splash_fragment.*
+import ru.shiftlaboratory.features.splash.navigation.NavigationCommands
+import ru.shiftlaboratory.libraries.navigation.navigate
 
 class SplashFragment : Fragment() {
 
@@ -14,6 +16,7 @@ class SplashFragment : Fragment() {
 	}
 
 	private lateinit var viewModel: SplashViewModel
+	private val navigationCommands by lazy { NavigationCommands() }
 
 	override fun onCreateView(
 		inflater: LayoutInflater, container: ViewGroup?,
@@ -22,10 +25,10 @@ class SplashFragment : Fragment() {
 		return inflater.inflate(R.layout.splash_fragment, container, false)
 	}
 
-	override fun onActivityCreated(savedInstanceState: Bundle?) {
-		super.onActivityCreated(savedInstanceState)
-		viewModel = ViewModelProviders.of(this).get(SplashViewModel::class.java)
-		// TODO: Use the ViewModel
+	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+		super.onViewCreated(view, savedInstanceState)
+		btn.setOnClickListener {
+			navigate(navigationCommands.toDynamicFeature)
+		}
 	}
-
 }

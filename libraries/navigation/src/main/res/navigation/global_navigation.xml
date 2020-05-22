@@ -2,15 +2,19 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	android:id="@+id/navigation_global"
-	app:startDestination="@id/EscortsFragment">
+	app:startDestination="@id/splashFragment">
 	<fragment
 		android:id="@+id/splashFragment"
 		android:name="ru.shiftlaboratory.features.splash.SplashFragment"
 		android:label="SplashFragment">
+		<action android:id="@+id/action_splashFragment_to_EscortsFragment"
+			app:destination="@id/escorts_navigation"/>
 	</fragment>
-	<fragment
-		android:id="@+id/EscortsFragment"
-		android:name="ru.shiftlaboratory.dynamicFeatures.escorts.EscortsFragment"
-		android:label="EscortsFragment">
-	</fragment>
+	<include-dynamic
+		android:id="@id/escorts_navigation"
+		app:graphPackage="ru.shiftlaboratory.dynamicFeatures.escorts"
+		app:graphResName="escorts_navigation"
+		app:moduleName="escorts">
+	</include-dynamic>
+
 </navigation>
