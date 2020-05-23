@@ -3,7 +3,7 @@
 
 	<dist:module
 		dist:instant="false"
-		dist:title="@string/title_escorts">
+		dist:title="@string/dynamic_module_escorts">
 		<dist:delivery>
 			<dist:install-time/>
 		</dist:delivery>

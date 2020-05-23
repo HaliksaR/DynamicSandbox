@@ -10,5 +10,9 @@
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		android:text="Hello"/>
-
+	<Button
+		android:id="@+id/btn"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="click2"/>
 </FrameLayout>

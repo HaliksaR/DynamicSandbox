@@ -29,6 +29,10 @@ class SplashFragment : Fragment() {
 		super.onViewCreated(view, savedInstanceState)
 		btn.setOnClickListener {
 			navigate(navigationCommands.toDynamicFeature)
+/*			navigateToDynamic(
+				name = getString(R.string.dynamic_module_escorts),
+				navCommand = navigationCommands.toDynamicFeature
+			)*/
 		}
 	}
 }
