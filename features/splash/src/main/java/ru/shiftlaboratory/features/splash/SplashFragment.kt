@@ -6,22 +6,20 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.splash_fragment.*
-import ru.shiftlaboratory.features.splash.navigation.NavigationCommands
+import org.koin.androidx.viewmodel.ext.android.getViewModel
+import ru.shiftlaboratory.features.splash.navigation.NavigationActions
 import ru.shiftlaboratory.libraries.navigation.navigate
 
 class SplashFragment : Fragment() {
-
-	companion object {
-		fun newInstance() = SplashFragment()
-	}
-
 	private lateinit var viewModel: SplashViewModel
-	private val navigationCommands by lazy { NavigationCommands() }
+	private val navigationCommands by lazy { NavigationActions() }
 
 	override fun onCreateView(
-		inflater: LayoutInflater, container: ViewGroup?,
+		inflater: LayoutInflater,
+		container: ViewGroup?,
 		savedInstanceState: Bundle?
 	): View? {
+		viewModel = getViewModel()
 		return inflater.inflate(R.layout.splash_fragment, container, false)
 	}
 

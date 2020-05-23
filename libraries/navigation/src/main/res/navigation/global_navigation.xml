@@ -14,5 +14,7 @@
 		android:id="@+id/EscortsFragment"
 		android:name="ru.shiftlaboratory.dynamicFeatures.escorts.EscortsFragment"
 		android:label="EscortsFragment">
+		<action android:id="@+id/action_EscortsFragment_to_splashFragment"
+			app:destination="@id/splashFragment"/>
 	</fragment>
 </navigation>

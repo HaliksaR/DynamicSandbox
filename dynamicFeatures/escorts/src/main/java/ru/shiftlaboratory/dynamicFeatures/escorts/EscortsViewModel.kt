@@ -1,7 +1,5 @@
 package ru.shiftlaboratory.dynamicFeatures.escorts
 
-import androidx.lifecycle.ViewModel
+import ru.shiftlaboratory.libraries.core.BaseViewModel
 
-class EscortsViewModel : ViewModel() {
-	// TODO: Implement the ViewModel
-}
+class EscortsViewModel : BaseViewModel()

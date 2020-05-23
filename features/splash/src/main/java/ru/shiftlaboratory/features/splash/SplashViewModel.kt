@@ -1,7 +1,7 @@
 package ru.shiftlaboratory.features.splash
 
-import androidx.lifecycle.ViewModel
+import ru.shiftlaboratory.libraries.core.BaseViewModel
 
-class SplashViewModel : ViewModel() {
-	// TODO: Implement the ViewModel
+class SplashViewModel : BaseViewModel() {
+
 }
