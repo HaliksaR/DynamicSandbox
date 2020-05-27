@@ -1,4 +1,4 @@
-package ru.shiftlaboratory.dynamicFeatures.escorts
+package ru.shiftlaboratory.dynamicFeatures.escorts.screens
 
 import ru.shiftlaboratory.libraries.core.BaseViewModel
 

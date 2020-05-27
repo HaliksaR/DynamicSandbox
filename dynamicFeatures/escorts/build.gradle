@@ -3,6 +3,8 @@ apply plugin: Plugins.KOTLIN_ANDROID
 apply plugin: Plugins.KOTLIN_EXTENSIONS
 
 apply from: "${project.rootDir}/build_system/androidDynamic.gradle"
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 dependencies {
 	implementation project(Modules.App)

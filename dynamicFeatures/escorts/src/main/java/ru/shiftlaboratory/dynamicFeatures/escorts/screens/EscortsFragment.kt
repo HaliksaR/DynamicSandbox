@@ -1,4 +1,4 @@
-package ru.shiftlaboratory.dynamicFeatures.escorts
+package ru.shiftlaboratory.dynamicFeatures.escorts.screens
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,8 +8,9 @@ import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.escorts_fragment.*
 import org.koin.android.ext.android.get
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import ru.shiftlaboratory.dynamicFeatures.escorts.di.injectDynamicFeature
-import ru.shiftlaboratory.dynamicFeatures.escorts.navigation.NavigationActions
+import ru.shiftlaboratory.dynamicFeatures.escorts.R
+import ru.shiftlaboratory.dynamicFeatures.escorts.screens.di.injectDynamicFeature
+import ru.shiftlaboratory.dynamicFeatures.escorts.screens.navigation.NavigationActions
 import ru.shiftlaboratory.libraries.navigation.navigate
 import ru.shiftlaboratory.libraries.network.Network
 import ru.shiftlaboratory.libraries.storage.Storage

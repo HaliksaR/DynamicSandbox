@@ -1,77 +1,51 @@
 package ru.shiftlaboratory.libraries.splitinstaller
 
-import android.app.Activity
-import android.util.Log
-import com.google.android.play.core.splitinstall.SplitInstallManager
-import com.google.android.play.core.splitinstall.SplitInstallManagerFactory
+import android.content.Context
+import android.content.DialogInterface
+import android.widget.Toast
+import androidx.annotation.StringRes
+import androidx.appcompat.app.AlertDialog
 import com.google.android.play.core.splitinstall.SplitInstallRequest
 import com.google.android.play.core.splitinstall.SplitInstallStateUpdatedListener
 import com.google.android.play.core.splitinstall.model.SplitInstallSessionStatus
+import com.google.android.play.core.splitinstall.testing.FakeSplitInstallManager
+import com.google.android.play.core.splitinstall.testing.FakeSplitInstallManagerFactory
 import ru.shiftlaboratory.libraries.splitinstaller.view.SplitInstallerViewBase
 
+data class ConfirmationDialog(@StringRes val title: Int, @StringRes val message: Int)
+
 class SplitInstaller(
-	private val activity: Activity,
+	private val context: Context,
+	private val dialog: ConfirmationDialog,
 	private val splitInstallerViewBase: SplitInstallerViewBase
 ) {
 
-	private val manager: SplitInstallManager by lazy {
-		SplitInstallManagerFactory.create(activity)
+	private val manager: FakeSplitInstallManager by lazy {
+		FakeSplitInstallManagerFactory.create(context).apply {
+			setShouldNetworkError(true)
+		}
 	}
 
-	private var featuresName = mutableListOf<String>()
+	private var featureName = ""
 
 	private var onFeatureReady: () -> Unit = {}
 	private var onFeatureError: () -> Unit = {}
 
-	private val listener = SplitInstallStateUpdatedListener { state ->
-		val names = state.moduleNames().joinToString(", ")
-		when (state.status()) {
-			SplitInstallSessionStatus.DOWNLOADING                -> {
-				splitInstallerViewBase.displayDownloadingState(state, activity.getString(R.string.state_dynamic_module_downloading, names))
-				Log.d("state", "DOWNLOADING")
-			}
-
-			SplitInstallSessionStatus.REQUIRES_USER_CONFIRMATION -> {
-				manager.startConfirmationDialogForResult(state, activity, CONFIRMATION_REQUEST_CODE)
-				Log.d("state", "REQUIRES_USER_CONFIRMATION")
-			}
-
-			SplitInstallSessionStatus.INSTALLED                  -> {
-				onFeatureReady()
-				Log.d("state", "INSTALLED")
-			}
-
-			SplitInstallSessionStatus.INSTALLING                 -> {
-				splitInstallerViewBase.displayInstallingState(activity.getString(R.string.state_dynamic_module_installing, names))
-				Log.d("state", "INSTALLING")
-			}
-
-			SplitInstallSessionStatus.FAILED                     -> {
-				splitInstallerViewBase.displayFailedState(
-					activity.getString(R.string.state_dynamic_module_error, state.errorCode(), state.moduleNames())
-				)
-				Log.d("state", "FAILED")
-			}
-
-			else                                                 -> Log.d("state", "else")
-
+	private fun showConfirmationDialog() {
+		with(dialog) {
+			AlertDialog.Builder(context).apply {
+				setTitle(title)
+				setMessage(message)
+				setPositiveButton("Скачать") { _: DialogInterface?, _: Int -> startInstall() }
+				setNegativeButton("Закрыть") { _: DialogInterface?, _: Int -> null }
+			}.show()
 		}
 	}
 
-	private fun registerListener() {
-		manager.registerListener(listener)
-	}
-
-	private fun unregisterListener() {
-		manager.unregisterListener(listener)
-	}
-
-	fun getDynamicFeature(names: List<Int>, func: SplitInstaller.() -> Unit): SplitInstaller {
-		registerListener()
-		names.map { featuresName.add(activity.getString(it)) }
+	fun getDynamicFeature(name: Int, func: SplitInstaller.() -> Unit): SplitInstaller {
+		featureName = context.getString(name)
 		this.func()
 		checkFeature()
-		unregisterListener()
 		return this
 	}
 
@@ -84,31 +58,56 @@ class SplitInstaller(
 	}
 
 	private fun checkFeature() {
-		featuresName.forEach {
-			if (it.isEmpty()) throw IllegalArgumentException("Feature name not provided")
+		if (featureName.isEmpty()) throw IllegalArgumentException("Feature name not provided")
+		if (manager.installedModules.contains(featureName)) onFeatureReady()
+		else {
+			with(splitInstallerViewBase) {
+				setOnClickListenerStatus(::showConfirmationDialog)
+				setOnClickListenerOnRefresh(::startInstall)
+				setOnClickListenerOnCancel(this::displayStartState)
+			}
 		}
-		Log.d("installedModules", manager.installedModules.toString())
-		if (manager.installedModules.containsAll(featuresName)) onFeatureReady()
-		else startInstall()
+	}
+
+	private var mySessionId = 0
+
+	private val listener = SplitInstallStateUpdatedListener { state ->
+		if (state.sessionId() == mySessionId) {
+			with(splitInstallerViewBase) {
+				Toast.makeText(context, "registerListener", Toast.LENGTH_LONG).show()
+				setOnClickListenerStatus {
+					manager.cancelInstall(state.sessionId())
+				}
+				when (state.status()) {
+					SplitInstallSessionStatus.DOWNLOADING -> {
+						displayDownloadingState(state, context.getString(R.string.state_dynamic_module_downloading, featureName))
+					}
+
+					SplitInstallSessionStatus.INSTALLING  -> {
+						displayInstallingState(context.getString(R.string.state_dynamic_module_installing, featureName))
+					}
+
+					SplitInstallSessionStatus.INSTALLED   -> {
+						onFeatureReady()
+					}
+
+					SplitInstallSessionStatus.FAILED      -> {
+						displayFailedState(context.getString(R.string.state_dynamic_module_error, state.errorCode(), state.moduleNames()))
+						onFeatureError()
+					}
+				}
+			}
+		}
 	}
 
 	private fun startInstall() {
-		val requestBuilder = SplitInstallRequest.newBuilder()
-		featuresName.forEach {
-			if (!manager.installedModules.contains(it)) {
-				requestBuilder.addModule(it)
-			}
-		}
-		manager.startInstall(requestBuilder.build())
-			.addOnFailureListener {
-				onFeatureError()
-			}.addOnSuccessListener {
-				onFeatureReady()
-			}
-	}
+		val request = SplitInstallRequest
+			.newBuilder()
+			.addModule(featureName)
+			.build()
 
-	companion object {
-		private const val CONFIRMATION_REQUEST_CODE = 1
+		manager.registerListener(listener)
+		manager.startInstall(request)
+			.addOnSuccessListener { mySessionId = it }
 	}
-
 }

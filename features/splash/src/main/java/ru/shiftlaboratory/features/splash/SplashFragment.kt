@@ -1,7 +1,6 @@
 package ru.shiftlaboratory.features.splash
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +11,7 @@ import org.koin.android.ext.android.get
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 import org.koin.core.parameter.parametersOf
 import ru.shiftlaboratory.features.splash.navigation.NavigationActions
-import ru.shiftlaboratory.libraries.navigation.navigate
+import ru.shiftlaboratory.libraries.splitinstaller.ConfirmationDialog
 import ru.shiftlaboratory.libraries.splitinstaller.SplitInstaller
 
 class SplashFragment : Fragment() {
@@ -30,16 +29,13 @@ class SplashFragment : Fragment() {
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
-		splitInstaller = get { parametersOf(requireActivity(), splitInstallerView) }
+		splitInstaller = get {
+			parametersOf(context, ConfirmationDialog(R.string.split_installer_btn_cancel, R.string.dynamic_module_escorts), splitInstallerView)
+		}
 		viewModel = getViewModel()
-	}
-
-	private fun navigateToDynamicFeature() {
-		splitInstaller.getDynamicFeature(listOf(R.string.dynamic_module_escorts)) {
+		splitInstaller.getDynamicFeature(R.string.dynamic_module_escorts) {
 			onFeatureReady {
-				navigate(navigationCommands.toDynamicFeature)
-			}
-			onFeatureError {
+				Toast.makeText(context, "done", Toast.LENGTH_LONG).show()
 			}
 		}
 	}

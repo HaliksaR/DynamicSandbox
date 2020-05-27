@@ -6,12 +6,6 @@ import android.view.View
 import android.widget.FrameLayout
 import com.google.android.play.core.splitinstall.SplitInstallSessionState
 
-/*@BindingAdapter("modules")
-fun SplitInstallerViewBase.modules(modules: List<Int>) {
-
-}*/
-
-
 abstract class SplitInstallerViewBase(
 	context: Context,
 	attrs: AttributeSet?,
@@ -29,4 +23,5 @@ abstract class SplitInstallerViewBase(
 	abstract fun setOnClickListenerOnRefresh(listener: () -> Unit)
 	abstract fun setOnClickListenerOnCancel(listener: () -> Unit)
 	abstract fun setOnClickListenerStatus(listener: () -> Unit)
+	abstract fun displayCompleteState()
 }

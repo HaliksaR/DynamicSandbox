@@ -12,7 +12,7 @@
 	</fragment>
 	<fragment
 		android:id="@+id/EscortsFragment"
-		android:name="ru.shiftlaboratory.dynamicFeatures.escorts.EscortsFragment"
+		android:name="ru.shiftlaboratory.dynamicFeatures.escorts.screens.EscortsFragment"
 		android:label="EscortsFragment">
 		<action android:id="@+id/action_EscortsFragment_to_splashFragment"
 			app:destination="@id/splashFragment"/>

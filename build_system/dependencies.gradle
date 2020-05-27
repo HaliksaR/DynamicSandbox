@@ -32,7 +32,7 @@ def Versions = [
 	CAMERA_VIEW                     : "1.0.0-alpha08",
 	FIREBASE_ML_VISION              : "24.0.1",
 	FIREBASE_ML_VISION_BARCODE_MODEL: "16.0.2",
-	PLAY_CORE                       : "1.6.1",
+	PLAY_CORE                       : "1.7.3",
 ]
 
 def VersionsTest = [

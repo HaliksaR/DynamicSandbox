@@ -1,4 +1,4 @@
-package ru.shiftlaboratory.dynamicFeatures.escorts.navigation
+package ru.shiftlaboratory.dynamicFeatures.escorts.screens.navigation
 
 import ru.shiftlaboratory.features.splash.R
 import ru.shiftlaboratory.libraries.navigation.NavCommand

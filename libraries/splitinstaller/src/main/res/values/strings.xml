@@ -4,4 +4,12 @@
 	<string name="split_installer_btn_cancel">Закрыть</string>
 	<string name="split_installer_btn_status">Кнопка статуса</string>
 	<string name="split_installer_btn_description_download">Нажмите на кнопку стоп, если хотите прервать процесс установки</string>
+
+	<string name="state_dynamic_module_loading">Инициализация модуля %1$s</string>
+	<string name="state_dynamic_module_downloading">Скачивание модуля %1$s</string>
+	<string name="state_dynamic_module_already_installed">Модуль %1$s уже установлен</string>
+	<string name="state_dynamic_module_for">Устанавливаем модуль %1$s</string>
+	<string name="state_dynamic_module_installing">Установка модуля %1$s</string>
+	<string name="state_dynamic_module_error">Произошла ошибка %1$i при установке модуля %2$</string>
+	<string name="state_dynamic_module_user_cancelled">Вы отменили установку модуля %1$s</string>
 </resources>

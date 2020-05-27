@@ -18,10 +18,4 @@
 		<attr name="descriptionText"/>
 		<attr name="modules"/>
 	</declare-styleable>
-
-	<declare-styleable name="SplitInstallerItem">
-		<attr name="titleText"/>
-		<attr name="descriptionText"/>
-		<attr name="modules"/>
-	</declare-styleable>
 </resources>

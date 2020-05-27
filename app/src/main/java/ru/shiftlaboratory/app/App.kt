@@ -1,6 +1,8 @@
 package ru.shiftlaboratory.app
 
 import android.app.Application
+import android.content.Context
+import com.google.android.play.core.splitcompat.SplitCompat
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import ru.shiftlaboratory.app.di.AppModule
@@ -18,9 +20,9 @@ class App : Application() {
 			modules(AppModule, SplitInstallerModule, SplashModule, NetworkModule, StorageModule)
 		}
 	}
-/*
+
 	override fun attachBaseContext(base: Context?) {
 		super.attachBaseContext(base)
 		SplitCompat.install(this)
-	}*/
+	}
 }
