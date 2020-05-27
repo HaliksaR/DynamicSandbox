@@ -5,7 +5,7 @@ import org.koin.core.context.loadKoinModules
 import org.koin.dsl.module
 import ru.shiftlaboratory.dynamicFeatures.escorts.EscortsViewModel
 
-fun injectDynamicFeature() = loader
+internal fun injectDynamicFeature() = loader
 
 private val loader by lazy {
 	loadKoinModules(EscortsModule)

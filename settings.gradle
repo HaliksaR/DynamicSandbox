@@ -25,4 +25,4 @@ include SubModules.Responsescreen
 
 
 include DynamicModules.Escorts
-include ':libraries:core'
+include example.mylibrary

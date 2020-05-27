@@ -32,4 +32,7 @@ ext {
 		Storage       : ':libraries:storage',
 		TestUtils     : ':libraries:testutils',
 	]
+	example = [
+		mylibrary : ':example:mylibrary'
+	]
 }
