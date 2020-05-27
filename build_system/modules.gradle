@@ -33,6 +33,6 @@ ext {
 		TestUtils     : ':libraries:testutils',
 	]
 	example = [
-		mylibrary : ':example:mylibrary'
+		mylibrary: ':example:mylibrary'
 	]
 }

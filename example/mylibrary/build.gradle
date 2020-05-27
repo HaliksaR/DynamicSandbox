@@ -14,6 +14,8 @@ dependencies {
 	implementation Dependencies.CORE
 	implementation Dependencies.CONSTRAINT_LAYOUT
 
+	implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
+
 	testImplementation DependenciesForTests.JUNIT
 	testImplementation DependenciesForTests.KOTEST
 	testImplementation DependenciesForTests.MOCKK

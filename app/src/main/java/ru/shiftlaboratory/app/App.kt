@@ -15,7 +15,7 @@ class App : Application() {
 		startKoin {
 			printLogger()
 			androidContext(this@App)
-			modules(AppModule + SplitInstallerModule + SplashModule + NetworkModule + StorageModule)
+			modules(AppModule, SplitInstallerModule, SplashModule, NetworkModule, StorageModule)
 		}
 	}
 /*

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="split_installer_btn_refresh">Попробовать снова</string>
+	<string name="split_installer_btn_cancel">Закрыть</string>
+	<string name="split_installer_btn_status">Кнопка статуса</string>
+	<string name="split_installer_btn_description_download">Нажмите на кнопку стоп, если хотите прервать процесс установки</string>
+</resources>

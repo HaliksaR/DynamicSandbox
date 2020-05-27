@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<attr format="reference|string" name="titleText"/>
+	<attr format="reference|string" name="descriptionText"/>
+	<attr format="reference" name="modules"/>
+
+	<attr format="reference" name="drawable"/>
+
+	<declare-styleable name="SplitInstallerComponent">
+		<attr name="titleText"/>
+		<attr name="descriptionText"/>
+		<attr name="modules"/>
+	</declare-styleable>
+
+	<declare-styleable name="SplitInstallerView">
+		<attr name="drawable"/>
+		<attr name="titleText"/>
+		<attr name="descriptionText"/>
+		<attr name="modules"/>
+	</declare-styleable>
+
+	<declare-styleable name="SplitInstallerItem">
+		<attr name="titleText"/>
+		<attr name="descriptionText"/>
+		<attr name="modules"/>
+	</declare-styleable>
+</resources>

@@ -7,11 +7,11 @@ import com.google.android.play.core.splitinstall.SplitInstallManagerFactory
 import com.google.android.play.core.splitinstall.SplitInstallRequest
 import com.google.android.play.core.splitinstall.SplitInstallStateUpdatedListener
 import com.google.android.play.core.splitinstall.model.SplitInstallSessionStatus
-import ru.shiftlaboratory.libraries.splitinstaller.view.SplitInstallerView
+import ru.shiftlaboratory.libraries.splitinstaller.view.SplitInstallerViewBase
 
 class SplitInstaller(
 	private val activity: Activity,
-	private val splitInstallerView: SplitInstallerView
+	private val splitInstallerViewBase: SplitInstallerViewBase
 ) {
 
 	private val manager: SplitInstallManager by lazy {
@@ -27,7 +27,7 @@ class SplitInstaller(
 		val names = state.moduleNames().joinToString(", ")
 		when (state.status()) {
 			SplitInstallSessionStatus.DOWNLOADING                -> {
-				splitInstallerView.displayDownloadingState(state, activity.getString(R.string.state_dynamic_module_downloading, names))
+				splitInstallerViewBase.displayDownloadingState(state, activity.getString(R.string.state_dynamic_module_downloading, names))
 				Log.d("state", "DOWNLOADING")
 			}
 
@@ -42,12 +42,12 @@ class SplitInstaller(
 			}
 
 			SplitInstallSessionStatus.INSTALLING                 -> {
-				splitInstallerView.displayInstallingState(activity.getString(R.string.state_dynamic_module_installing, names))
+				splitInstallerViewBase.displayInstallingState(activity.getString(R.string.state_dynamic_module_installing, names))
 				Log.d("state", "INSTALLING")
 			}
 
 			SplitInstallSessionStatus.FAILED                     -> {
-				splitInstallerView.displayFailedState(
+				splitInstallerViewBase.displayFailedState(
 					activity.getString(R.string.state_dynamic_module_error, state.errorCode(), state.moduleNames())
 				)
 				Log.d("state", "FAILED")

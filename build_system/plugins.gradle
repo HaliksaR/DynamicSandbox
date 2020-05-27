@@ -1,13 +1,13 @@
 ext {
 	Plugins = [
-		DYNAMIC_FEATURE: 'com.android.dynamic-feature',
-		ANDROID_APPLICATION : "com.android.application",
-		ANDROID_LIBRARY : "com.android.library",
-		KOTLIN_ANDROID : "kotlin-android",
-		KOTLIN_EXTENSIONS : "kotlin-android-extensions",
-		KOTLIN_KAPT : "kotlin-kapt",
-		NAVIGATION_SAVEARGS_KOTLIN : "androidx.navigation.safeargs.kotlin",
-		DOKKA : "org.jetbrains.dokka-android",
-		GOOGLE_SERVICES : "com.google.gms.google-services"
+		DYNAMIC_FEATURE           : 'com.android.dynamic-feature',
+		ANDROID_APPLICATION       : "com.android.application",
+		ANDROID_LIBRARY           : "com.android.library",
+		KOTLIN_ANDROID            : "kotlin-android",
+		KOTLIN_EXTENSIONS         : "kotlin-android-extensions",
+		KOTLIN_KAPT               : "kotlin-kapt",
+		NAVIGATION_SAVEARGS_KOTLIN: "androidx.navigation.safeargs.kotlin",
+		DOKKA                     : "org.jetbrains.dokka-android",
+		GOOGLE_SERVICES           : "com.google.gms.google-services"
 	]
 }

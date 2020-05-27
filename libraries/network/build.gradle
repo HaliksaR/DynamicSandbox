@@ -7,11 +7,11 @@ apply from: "${project.rootDir}/build_system/androidLibrary.gradle"
 
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation Dependencies.KOTLIN_STANDARD_LIBRARY
-    implementation Dependencies.APP_COMPAT
-    implementation Dependencies.CORE
-    implementation Dependencies.CONSTRAINT_LAYOUT
+	implementation fileTree(dir: 'libs', include: ['*.jar'])
+	implementation Dependencies.KOTLIN_STANDARD_LIBRARY
+	implementation Dependencies.APP_COMPAT
+	implementation Dependencies.CORE
+	implementation Dependencies.CONSTRAINT_LAYOUT
 
 	implementation Dependencies.KOIN_SCOPE
 	implementation Dependencies.KOIN_VIEWMODEL

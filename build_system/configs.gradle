@@ -3,7 +3,7 @@ import java.time.format.DateTimeFormatter
 
 ext {
 	Configs = [
-		appID : "ru.shiftlaboratory",
+		appID                    : "ru.shiftlaboratory",
 		androidCompileSdkVersion : 29,
 		androidMinSdkVersion     : 22,
 		androidTargetSdkVersion  : 29,

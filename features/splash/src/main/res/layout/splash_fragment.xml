@@ -1,52 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:app="http://schemas.android.com/apk/res-auto"
-	xmlns:tools="http://schemas.android.com/tools"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	tools:context=".SplashFragment">
-
-	<TextView
-		android:id="@+id/textView"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:text="Hello"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		tools:layout_editor_absoluteY="200dp"/>
-	<Button
-		android:id="@+id/btn"
+<layout>
+	<androidx.constraintlayout.widget.ConstraintLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:app="http://schemas.android.com/apk/res-auto"
+		xmlns:tools="http://schemas.android.com/tools"
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:layout_marginBottom="32dp"
-		android:text="ckick"
-		app:layout_constraintBottom_toBottomOf="parent"
-		tools:layout_editor_absoluteX="0dp"/>
-	<ProgressBar
-		android:id="@+id/progressBar"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_marginTop="16dp"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/textView"
-		style="?android:attr/progressBarStyleHorizontal"/>
-	<Button
-		android:id="@+id/button"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_marginTop="32dp"
-		android:text="refresh"
-		app:layout_constraintTop_toBottomOf="@+id/progressBar"
-		app:layout_constraintEnd_toStartOf="@+id/progressBar"/>
-	<Button
-		android:id="@+id/button2"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_marginTop="32dp"
-		android:text="cancel"
-		app:layout_constraintTop_toBottomOf="@+id/progressBar"
-		app:layout_constraintStart_toEndOf="@+id/progressBar"/>
+		android:layout_height="match_parent"
+		tools:context=".SplashFragment">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+		<ru.shiftlaboratory.libraries.splitinstaller.view.component.SplitInstallerComponent
+			android:layout_margin="20dp"
+			android:id="@+id/splitInstallerView"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			app:titleText="Скачайте Модули "
+			app:descriptionText="Скачайте Модули "
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintTop_toTopOf="parent"/>
+
+	</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

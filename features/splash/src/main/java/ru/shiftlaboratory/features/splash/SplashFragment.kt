@@ -14,13 +14,11 @@ import org.koin.core.parameter.parametersOf
 import ru.shiftlaboratory.features.splash.navigation.NavigationActions
 import ru.shiftlaboratory.libraries.navigation.navigate
 import ru.shiftlaboratory.libraries.splitinstaller.SplitInstaller
-import ru.shiftlaboratory.libraries.splitinstaller.view.SplitInstallerView
 
 class SplashFragment : Fragment() {
 	private lateinit var viewModel: SplashViewModel
 	private val navigationCommands by lazy { NavigationActions() }
 	private lateinit var splitInstaller: SplitInstaller
-	private lateinit var splitView: SplitInstallerView
 
 	override fun onCreateView(
 		inflater: LayoutInflater,
@@ -32,21 +30,8 @@ class SplashFragment : Fragment() {
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
-		splitView = SplitInstallerView(message = textView, progress = progressBar)
-		splitInstaller = get { parametersOf(requireActivity(), splitView) }
+		splitInstaller = get { parametersOf(requireActivity(), splitInstallerView) }
 		viewModel = getViewModel()
-		button.visibility = View.GONE
-		button2.visibility = View.GONE
-		button.setOnClickListener {
-			navigateToDynamicFeature()
-		}
-		button2.setOnClickListener {
-			Toast.makeText(requireContext(), "Cancel", Toast.LENGTH_LONG).show()
-		}
-
-		btn.setOnClickListener {
-			navigateToDynamicFeature()
-		}
 	}
 
 	private fun navigateToDynamicFeature() {
@@ -55,9 +40,6 @@ class SplashFragment : Fragment() {
 				navigate(navigationCommands.toDynamicFeature)
 			}
 			onFeatureError {
-				button.visibility = View.VISIBLE
-				button2.visibility = View.VISIBLE
-				Log.d("state", "onFeatureError")
 			}
 		}
 	}
