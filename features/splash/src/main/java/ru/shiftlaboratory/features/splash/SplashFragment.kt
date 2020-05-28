@@ -9,7 +9,6 @@ import org.koin.androidx.viewmodel.ext.android.getViewModel
 import ru.shiftlaboratory.dynamicFeatures.providers.DDMProviderManager
 import ru.shiftlaboratory.dynamicFeatures.providers.escorts.Escorts
 import ru.shiftlaboratory.features.splash.navigation.NavigationActions
-import ru.shiftlaboratory.libraries.navigation.navigate
 import ru.shiftlaboratory.libraries.splitinstaller.SplitInstaller
 
 class SplashFragment : Fragment() {
@@ -32,12 +31,22 @@ class SplashFragment : Fragment() {
 		}*/
 		viewModel = getViewModel()
 
-		DDMProviderManager.Koin.loadModule(Escorts.MODULE_PROVIDER) {
-			onSuccess { navigate(navigationCommands.toDynamicFeature) }
+		DDMProviderManager.Koin.loadModule(Escorts.MODULE_SCREEN_PROVIDER) {
+			onSuccess {}
 			onError {}
 		}
 
-		DDMProviderManager.Koin.unloadModule(Escorts.MODULE_PROVIDER) {
+		DDMProviderManager.Koin.unloadModule(Escorts.MODULE_SCREEN_PROVIDER) {
+			onSuccess {}
+			onError {}
+		}
+
+		DDMProviderManager.Koin.loadModule(Escorts.MODULE_HOME_COMPONENT_PROVIDER) {
+			onSuccess {}
+			onError {}
+		}
+
+		DDMProviderManager.Koin.unloadModule(Escorts.MODULE_HOME_COMPONENT_PROVIDER) {
 			onSuccess {}
 			onError {}
 		}

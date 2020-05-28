@@ -24,10 +24,10 @@ object DDMProviderManager {
 		internal fun run() = try {
 			val kClass = Class.forName(className).kotlin
 			onFeatureSuccess((kClass.objectInstance ?: kClass.java.newInstance()) as T)
-			Log.d("FeatureProviderManager", "onSuccess!")
+			Log.d("DDMProviderManager", "$className onSuccess!")
 		} catch (e: ClassNotFoundException) {
 			onFeatureError()
-			Log.d("FeatureProviderManager", "onError...")
+			Log.e("DDMProviderManager", "$className onError...")
 		}
 	}
 
@@ -49,10 +49,10 @@ object DDMProviderManager {
 				val provider = ((kClass.objectInstance ?: kClass.java.newInstance()) as T)
 				if (load) loadKoinModules(provider.modules) else unloadKoinModules(provider.modules)
 				onFeatureSuccess()
-				Log.d("FeatureProviderManager", "onSuccess!")
+				Log.d("DDMProviderManager.Koin", "$className Koin onSuccess!")
 			} catch (e: ClassNotFoundException) {
 				onFeatureError()
-				Log.d("FeatureProviderManager", "onError...")
+				Log.e("DDMProviderManager.Koin", "$className Koin onError...")
 			}
 		}
 
@@ -69,14 +69,14 @@ object DDMProviderManager {
 		) = StateKoinProvider<KoinFeatureModulesProvider>(className)
 			.apply(func)
 			.run(false)
-
-		fun getProvider(
-			className: String,
-			func: StateProvider<KoinFeatureModulesProvider>.() -> Unit
-		) = StateProvider<KoinFeatureModulesProvider>(className)
-			.apply(func)
-			.run()
 	}
+
+	fun getKoinProvider(
+		className: String,
+		func: StateProvider<KoinFeatureModulesProvider>.() -> Unit
+	) = StateProvider<KoinFeatureModulesProvider>(className)
+		.apply(func)
+		.run()
 
 	fun <V : ApiProviderFragment> getView(
 		className: String,

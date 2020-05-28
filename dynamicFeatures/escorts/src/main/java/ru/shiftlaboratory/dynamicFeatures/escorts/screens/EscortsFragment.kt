@@ -16,7 +16,7 @@ import ru.shiftlaboratory.libraries.storage.Storage
 
 class EscortsFragment : Fragment() {
 
-	private val escortsViewModel: EscortsViewModel by viewModel()
+	private val viewModel: EscortsViewModel by viewModel()
 	private val navigationActions: NavigationActions by lazy { NavigationActions() }
 
 	override fun onCreateView(
@@ -28,7 +28,7 @@ class EscortsFragment : Fragment() {
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
-		escortsViewModel.apply { 0 }
+		viewModel.apply { 0 }
 		val storage = get<Storage>()
 		val network = get<Network>()
 		storage.sendToStorage("ggg")
