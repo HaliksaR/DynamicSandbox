@@ -10,16 +10,19 @@
 		android:layout_height="wrap_content"
 		android:orientation="vertical">
 		<TextView
+			android:id="@+id/status"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
-			android:text="Статус"/>
+			tools:text="Статус"/>
 		<TextView
+			android:id="@+id/title"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
-			android:text="Название"/>
+			tools:text="Название"/>
 		<TextView
+			android:id="@+id/city"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
-			android:text="Город"/>
+			tools:text="Город"/>
 	</LinearLayout>
 </FrameLayout>

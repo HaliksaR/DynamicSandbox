@@ -1,3 +1,4 @@
+include ':dynamicFeatures:providers'
 apply from: "build_system/modules.gradle"
 
 rootProject.name = 'DynamicSandbox'
@@ -25,4 +26,7 @@ include SubModules.Responsescreen
 
 
 include DynamicModules.Escorts
+include DynamicModulesUtils.Providers
+
+
 include example.mylibrary

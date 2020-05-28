@@ -9,7 +9,6 @@ import kotlinx.android.synthetic.main.escorts_fragment.*
 import org.koin.android.ext.android.get
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.shiftlaboratory.dynamicFeatures.escorts.R
-import ru.shiftlaboratory.dynamicFeatures.escorts.screens.di.injectDynamicFeature
 import ru.shiftlaboratory.dynamicFeatures.escorts.screens.navigation.NavigationActions
 import ru.shiftlaboratory.libraries.navigation.navigate
 import ru.shiftlaboratory.libraries.network.Network
@@ -24,7 +23,6 @@ class EscortsFragment : Fragment() {
 		inflater: LayoutInflater, container: ViewGroup?,
 		savedInstanceState: Bundle?
 	): View? {
-		injectDynamicFeature()
 		return inflater.inflate(R.layout.escorts_fragment, container, false)
 	}
 

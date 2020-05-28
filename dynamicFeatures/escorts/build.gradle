@@ -36,4 +36,6 @@ dependencies {
 	implementation project(LibModules.Navigation)
 	implementation project(LibModules.Network)
 	implementation project(LibModules.Storage)
+
+	implementation project(DynamicModulesUtils.Providers)
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources
+>
 	<!--https://github.com/googlearchive/android-dynamic-features/blob/master/app/src/main/java/com/google/android/samples/dynamicfeatures/MainActivity.kt-->
 	<string name="dynamic_module_escorts">Отклики</string>
 </resources>

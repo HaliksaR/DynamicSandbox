@@ -1,0 +1,3 @@
+package ru.shiftlaboratory.dynamicFeatures.providers.base
+
+interface ApiProviderViewModel

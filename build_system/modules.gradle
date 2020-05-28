@@ -24,6 +24,9 @@ ext {
 	DynamicModules = [
 		Escorts: ':dynamicFeatures:escorts'
 	]
+	DynamicModulesUtils = [
+		Providers: ':dynamicFeatures:providers'
+	]
 	LibModules = [
 		Core          : ':libraries:core',
 		Navigation    : ':libraries:navigation',

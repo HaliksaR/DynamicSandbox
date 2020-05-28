@@ -31,4 +31,6 @@ dependencies {
 	implementation project(LibModules.Core)
 	implementation project(LibModules.Navigation)
 	implementation project(LibModules.SplitInstaller)
+
+	implementation project(DynamicModulesUtils.Providers)
 }

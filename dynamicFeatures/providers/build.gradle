@@ -7,16 +7,9 @@ apply from: "${project.rootDir}/build_system/androidLibrary.gradle"
 dependencies {
 	implementation Dependencies.KOTLIN_STANDARD_LIBRARY
 	implementation Dependencies.APP_COMPAT
-	implementation Dependencies.CORE
-	implementation Dependencies.CONSTRAINT_LAYOUT
 
-
-	implementation Dependencies.PLAY_CORE
-
-	implementation Dependencies.KOIN_SCOPE
-	implementation Dependencies.KOIN_VIEWMODEL
-	implementation Dependencies.KOIN_EXT
 	implementation Dependencies.KOIN_CORE
+	implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
 
 	testImplementation(DependenciesForTests.JUNIT)
 	testImplementation(DependenciesForTests.KOTEST)
@@ -24,7 +17,5 @@ dependencies {
 	testImplementation(DependenciesForTests.CORE)
 	androidTestImplementation(DependenciesForTests.JUNIT_EXT)
 	androidTestImplementation(DependenciesForTests.ESPRESSO)
-
-
-	implementation project(DynamicModulesUtils.Providers)
+	implementation "org.jetbrains.kotlin:kotlin-reflect:1.3.72"
 }
