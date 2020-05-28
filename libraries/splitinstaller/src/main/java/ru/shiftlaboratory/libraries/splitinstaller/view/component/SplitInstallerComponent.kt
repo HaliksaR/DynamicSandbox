@@ -2,6 +2,7 @@ package ru.shiftlaboratory.libraries.splitinstaller.view.component
 
 import android.animation.ObjectAnimator
 import android.content.Context
+import android.os.Handler
 import android.util.AttributeSet
 import android.view.View
 import android.view.animation.DecelerateInterpolator
@@ -43,11 +44,33 @@ class SplitInstallerComponent(
 
 	override fun displayStartState() {
 		animation(false)
+		split_installer_view.isClickable = true
 		title.text = startTitle
 		description.text = startDescription
+		description.visibility = View.VISIBLE
 		btn_container.visibility = View.GONE
 		loader.visibility = View.GONE
 		statusImage(R.drawable.ic_download_split_manager)
+	}
+
+	fun displayDownloadingStateTest() {
+		loader.apply {
+			animation(false)
+			visibility = View.VISIBLE
+			max = 1000
+			progress = 344
+		}
+		title.text = "test"
+		split_installer_view.isClickable = false
+		btn_container.visibility = View.GONE
+		setOnClickListenerStatus {
+			displayStartState()
+		}
+		description.text = resources.getString(R.string.split_installer_btn_description_download)
+		statusImage(R.drawable.ic_cancel_split_manager)
+		Handler().postDelayed({
+			displayFailedState("message")
+		}, 1000)
 	}
 
 	override fun displayDownloadingState(state: SplitInstallSessionState, message: String) {
@@ -82,6 +105,13 @@ class SplitInstallerComponent(
 		loader.visibility = View.GONE
 		btn_container.visibility = View.VISIBLE
 		statusImage(R.drawable.ic_error_split_manager)
+		setOnClickListenerOnRefresh {
+			displayDownloadingStateTest()
+		}
+		setOnClickListenerOnCancel {
+			displayStartState()
+		}
+		setOnClickListenerStatus(null)
 	}
 
 	private fun animation(state: Boolean) = with(objectAnimator) {
@@ -97,12 +127,15 @@ class SplitInstallerComponent(
 	private fun statusImage(@DrawableRes drawableRes: Int) =
 		btn_status.setImageDrawable(ContextCompat.getDrawable(context, drawableRes))
 
-	override fun setOnClickListenerStatus(listener: () -> Unit) =
-		btn_status.setOnClickListener { listener() }
+	override fun setOnClickListenerStatus(listener: (() -> Unit)?) =
+		btn_status.setOnClickListener { listener?.invoke() }
 
 	override fun setOnClickListenerOnRefresh(listener: () -> Unit) =
 		btn_refresh.setOnClickListener { listener() }
 
 	override fun setOnClickListenerOnCancel(listener: () -> Unit) =
 		btn_cancel.setOnClickListener { listener() }
+
+	fun setOnClickListenerOnLayout(listener: () -> Unit) =
+		split_installer_view.setOnClickListener { listener() }
 }

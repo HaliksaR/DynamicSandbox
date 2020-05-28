@@ -22,6 +22,6 @@ abstract class SplitInstallerViewBase(
 
 	abstract fun setOnClickListenerOnRefresh(listener: () -> Unit)
 	abstract fun setOnClickListenerOnCancel(listener: () -> Unit)
-	abstract fun setOnClickListenerStatus(listener: () -> Unit)
+	abstract fun setOnClickListenerStatus(listener: (() -> Unit)?)
 	abstract fun displayCompleteState()
 }
