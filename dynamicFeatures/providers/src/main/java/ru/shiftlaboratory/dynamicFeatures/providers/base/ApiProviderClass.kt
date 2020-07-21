@@ -1,3 +1,0 @@
-package ru.shiftlaboratory.dynamicFeatures.providers.base
-
-interface ApiProviderClass
